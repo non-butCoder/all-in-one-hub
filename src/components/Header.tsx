@@ -1,6 +1,7 @@
-import { Phone, MapPin, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Menu, X, Phone, MapPin } from "lucide-react";
+import { Button } from "./ui/button";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,6 +9,7 @@ const Header = () => {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "Services", href: "#services" },
+    { name: "Pricing", href: "#pricing" },
     { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
@@ -25,25 +27,26 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-1">
             <MapPin className="w-3 h-3" />
-            <span>Main Road, Your City - 123456</span>
+            <span>Main Road, Near Bus Stand, Your City</span>
           </div>
         </div>
       </div>
 
-      {/* Main nav */}
-      <nav className="container mx-auto px-4 py-4">
+      {/* Main navigation */}
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
+          {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">D</span>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+              <span className="text-xl font-bold text-primary-foreground">D</span>
             </div>
             <div>
-              <h1 className="font-bold text-xl text-foreground">Digital Seva</h1>
-              <p className="text-xs text-muted-foreground">CSC Centre</p>
+              <span className="text-xl font-bold text-foreground">Digital</span>
+              <span className="text-xl font-bold text-primary"> Seva</span>
             </div>
           </a>
 
-          {/* Desktop Nav */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
@@ -54,19 +57,24 @@ const Header = () => {
                 {link.name}
               </a>
             ))}
+            <ThemeToggle />
             <Button size="sm">Get Quote</Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-foreground hover:text-primary transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-border pt-4 animate-fade-in">
             <div className="flex flex-col gap-4">
@@ -84,7 +92,7 @@ const Header = () => {
             </div>
           </div>
         )}
-      </nav>
+      </div>
     </header>
   );
 };
