@@ -77,7 +77,7 @@ const Hero = () => {
               <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-4 border border-white/20 shadow-2xl">
                 <img 
                   src={computerImage} 
-                  alt="Modern computer workstation at CSC Digital Services Center" 
+                  alt="Modern computer workstation at Bulbul Computer Centre" 
                   className="w-full h-auto rounded-2xl"
                 />
               </div>

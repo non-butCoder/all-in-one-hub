@@ -12,7 +12,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Digital Seva CSC Centre | Xerox, Printing, Travel Booking & Online Services</title>
+        <title>Bulbul Computer Centre | Xerox, Printing, Travel Booking & Online Services</title>
         <meta 
           name="description" 
           content="Your one-stop digital service hub for Xerox, photo printing, PVC cards, flight, train & bus booking, hotel reservations, job applications, and certificate services." 

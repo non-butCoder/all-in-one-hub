@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,11 +24,9 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">D</span>
-              </div>
+              <img src={logo} alt="Bulbul Computer Centre Logo" className="w-10 h-10 rounded-xl object-contain" />
               <div>
-                <h3 className="font-bold text-xl">Digital Seva</h3>
+                <h3 className="font-bold text-xl">Bulbul Computer Centre</h3>
                 <p className="text-xs text-background/60">CSC Centre</p>
               </div>
             </div>
@@ -108,7 +107,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-background/60 text-sm">
-              © {currentYear} Digital Seva CSC Centre. All rights reserved.
+              © {currentYear} Bulbul Computer Centre. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
               <a href="#" className="text-background/60 hover:text-accent transition-colors">

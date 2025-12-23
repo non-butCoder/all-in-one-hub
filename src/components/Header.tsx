@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X, Phone, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "./ThemeToggle";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,12 +38,10 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-xl font-bold text-primary-foreground">D</span>
-            </div>
+            <img src={logo} alt="Bulbul Computer Centre Logo" className="w-10 h-10 rounded-xl object-contain" />
             <div>
-              <span className="text-xl font-bold text-foreground">Digital</span>
-              <span className="text-xl font-bold text-primary"> Seva</span>
+              <span className="text-xl font-bold text-foreground">Bulbul</span>
+              <span className="text-xl font-bold text-primary"> Computer Centre</span>
             </div>
           </a>
 
