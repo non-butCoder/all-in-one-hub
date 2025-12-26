@@ -10,7 +10,8 @@ import {
   FileText, 
   Globe, 
   ShoppingBag,
-  ArrowRight
+  ArrowRight,
+  IdCard
 } from "lucide-react";
 
 const services = [
@@ -79,6 +80,12 @@ const services = [
     title: "Digital Shop",
     description: "Mobile recharge, bill payments & more",
     color: "from-rose-500 to-pink-600",
+  },
+  {
+    icon: IdCard,
+    title: "PAN Card Apply",
+    description: "New PAN card application, correction & reprinting services",
+    color: "from-yellow-500 to-amber-600",
   },
 ];
 
