@@ -14,6 +14,32 @@ import {
   IdCard
 } from "lucide-react";
 import xeroxMachine from "@/assets/xerox-machine.png";
+import cameraImg from "@/assets/camera.png";
+import pvcCardImg from "@/assets/pvc-card.png";
+import airplaneImg from "@/assets/airplane.png";
+import trainImg from "@/assets/train.png";
+import busImg from "@/assets/bus.png";
+import hotelImg from "@/assets/hotel.png";
+import globeDigitalImg from "@/assets/globe-digital.png";
+import briefcaseImg from "@/assets/briefcase.png";
+import certificateImg from "@/assets/certificate.png";
+import digitalShopImg from "@/assets/digital-shop.png";
+import panCardImg from "@/assets/pan-card.png";
+
+const serviceBackgrounds: Record<string, string> = {
+  "Xerox & Printing": xeroxMachine,
+  "Photo Printing": cameraImg,
+  "PVC Card Printing": pvcCardImg,
+  "Flight Booking": airplaneImg,
+  "Train Booking": trainImg,
+  "Bus Booking": busImg,
+  "Hotel Booking": hotelImg,
+  "Online Work": globeDigitalImg,
+  "Job Applications": briefcaseImg,
+  "Certificate Apply": certificateImg,
+  "Digital Shop": digitalShopImg,
+  "PAN Card Apply": panCardImg,
+};
 
 const services = [
   {
@@ -124,12 +150,12 @@ const Services = () => {
               {/* Gradient overlay on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
               
-              {/* Background image for Xerox & Printing */}
-              {service.title === "Xerox & Printing" && (
+              {/* Background image for each service */}
+              {serviceBackgrounds[service.title] && (
                 <div 
                   className="absolute right-0 bottom-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500"
                   style={{
-                    backgroundImage: `url(${xeroxMachine})`,
+                    backgroundImage: `url(${serviceBackgrounds[service.title]})`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'bottom right'
