@@ -39,8 +39,10 @@ const Contact = () => {
     service: "",
     message: "",
     copies: "1",
+    customCopies: "",
   });
   const [files, setFiles] = useState<File[]>([]);
+  const [showCustomCopies, setShowCustomCopies] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -53,14 +55,25 @@ const Contact = () => {
     setFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const handleCopiesChange = (value: string) => {
+    if (value === "custom") {
+      setShowCustomCopies(true);
+      setFormData({ ...formData, copies: "custom" });
+    } else {
+      setShowCustomCopies(false);
+      setFormData({ ...formData, copies: value, customCopies: "" });
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Message Sent!",
       description: `We'll get back to you within 24 hours.${files.length > 0 ? ` ${files.length} file(s) received.` : ""}`,
     });
-    setFormData({ name: "", phone: "", service: "", message: "", copies: "1" });
+    setFormData({ name: "", phone: "", service: "", message: "", copies: "1", customCopies: "" });
     setFiles([]);
+    setShowCustomCopies(false);
   };
 
   return (
@@ -172,14 +185,30 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Number of Copies
                   </label>
-                  <input
-                    type="number"
-                    min="1"
+                  <select
+                    required
                     value={formData.copies}
-                    onChange={(e) => setFormData({ ...formData, copies: e.target.value })}
+                    onChange={(e) => handleCopiesChange(e.target.value)}
                     className="w-full px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-foreground"
-                    placeholder="Enter number of copies"
-                  />
+                  >
+                    <option value="1">1 Copy</option>
+                    <option value="2">2 Copies</option>
+                    <option value="3">3 Copies</option>
+                    <option value="4">4 Copies</option>
+                    <option value="5">5 Copies</option>
+                    <option value="custom">Custom (More than 5)</option>
+                  </select>
+                  {showCustomCopies && (
+                    <input
+                      type="number"
+                      min="6"
+                      required
+                      value={formData.customCopies}
+                      onChange={(e) => setFormData({ ...formData, customCopies: e.target.value })}
+                      className="w-full px-4 py-3 mt-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-foreground"
+                      placeholder="Enter number of copies"
+                    />
+                  )}
                 </div>
               </div>
 
