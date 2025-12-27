@@ -13,6 +13,7 @@ import {
   ArrowRight,
   IdCard
 } from "lucide-react";
+import xeroxMachine from "@/assets/xerox-machine.png";
 
 const services = [
   {
@@ -122,6 +123,19 @@ const Services = () => {
             >
               {/* Gradient overlay on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+              
+              {/* Background image for Xerox & Printing */}
+              {service.title === "Xerox & Printing" && (
+                <div 
+                  className="absolute right-0 bottom-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500"
+                  style={{
+                    backgroundImage: `url(${xeroxMachine})`,
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'bottom right'
+                  }}
+                />
+              )}
               
               {/* Icon */}
               <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
