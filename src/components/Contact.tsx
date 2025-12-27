@@ -1,6 +1,6 @@
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, Upload, FileText, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
@@ -25,27 +25,42 @@ const contactInfo = [
   {
     icon: Clock,
     title: "Working Hours",
-    value: "Mon - Sat: 9:00 AM - 8:00 PM",
+    value: "Mon - Sun: 8:00 AM - 8:00 PM",
     link: "#",
   },
 ];
 
 const Contact = () => {
   const { toast } = useToast();
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     service: "",
     message: "",
+    copies: "1",
   });
+  const [files, setFiles] = useState<File[]>([]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setFiles((prev) => [...prev, ...newFiles]);
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFiles((prev) => prev.filter((_, i) => i !== index));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
+      description: `We'll get back to you within 24 hours.${files.length > 0 ? ` ${files.length} file(s) received.` : ""}`,
     });
-    setFormData({ name: "", phone: "", service: "", message: "" });
+    setFormData({ name: "", phone: "", service: "", message: "", copies: "1" });
+    setFiles([]);
   };
 
   return (
@@ -128,29 +143,100 @@ const Contact = () => {
                 </div>
               </div>
 
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Service Required
+                  </label>
+                  <select
+                    required
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-foreground"
+                  >
+                    <option value="">Select a service</option>
+                    <option value="xerox">Xerox & Printing</option>
+                    <option value="photo">Photo Printing</option>
+                    <option value="pvc">PVC Card Printing</option>
+                    <option value="flight">Flight Booking</option>
+                    <option value="train">Train Booking</option>
+                    <option value="bus">Bus Booking</option>
+                    <option value="hotel">Hotel Booking</option>
+                    <option value="online">Online Work</option>
+                    <option value="job">Job Applications</option>
+                    <option value="certificate">Certificate Apply</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Number of Copies
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    value={formData.copies}
+                    onChange={(e) => setFormData({ ...formData, copies: e.target.value })}
+                    className="w-full px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-foreground"
+                    placeholder="Enter number of copies"
+                  />
+                </div>
+              </div>
+
+              {/* Document Upload */}
               <div className="mb-6">
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Service Required
+                  Upload Documents (Photos, PDFs, etc.)
                 </label>
-                <select
-                  required
-                  value={formData.service}
-                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-full px-4 py-3 rounded-lg bg-secondary border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-foreground"
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleFileChange}
+                  multiple
+                  accept="image/*,.pdf,.doc,.docx"
+                  className="hidden"
+                />
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  className="w-full px-4 py-6 rounded-lg bg-secondary border-2 border-dashed border-border hover:border-primary/50 focus:border-primary cursor-pointer transition-all text-center"
                 >
-                  <option value="">Select a service</option>
-                  <option value="xerox">Xerox & Printing</option>
-                  <option value="photo">Photo Printing</option>
-                  <option value="pvc">PVC Card Printing</option>
-                  <option value="flight">Flight Booking</option>
-                  <option value="train">Train Booking</option>
-                  <option value="bus">Bus Booking</option>
-                  <option value="hotel">Hotel Booking</option>
-                  <option value="online">Online Work</option>
-                  <option value="job">Job Applications</option>
-                  <option value="certificate">Certificate Apply</option>
-                  <option value="other">Other</option>
-                </select>
+                  <Upload className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+                  <p className="text-muted-foreground text-sm">
+                    Click to upload files for printing
+                  </p>
+                  <p className="text-muted-foreground text-xs mt-1">
+                    Supports: Images, PDF, Word documents
+                  </p>
+                </div>
+
+                {/* File list */}
+                {files.length > 0 && (
+                  <div className="mt-4 space-y-2">
+                    {files.map((file, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-3 bg-secondary rounded-lg border border-border"
+                      >
+                        <div className="flex items-center gap-3">
+                          <FileText className="w-5 h-5 text-primary" />
+                          <span className="text-sm text-foreground truncate max-w-[200px]">
+                            {file.name}
+                          </span>
+                          <span className="text-xs text-muted-foreground">
+                            ({(file.size / 1024).toFixed(1)} KB)
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(index)}
+                          className="p-1 hover:bg-destructive/10 rounded-full transition-colors"
+                        >
+                          <X className="w-4 h-4 text-destructive" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <div className="mb-6">
