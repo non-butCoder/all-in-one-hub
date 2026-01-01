@@ -153,12 +153,16 @@ const Services = () => {
               {/* Background image for each service */}
               {serviceBackgrounds[service.title] && (
                 <div 
-                  className="absolute right-0 bottom-0 w-32 h-32 opacity-10 group-hover:opacity-20 transition-opacity duration-500"
+                  className={`absolute inset-0 transition-opacity duration-500 ${
+                    service.title === "Photo Printing" 
+                      ? "opacity-40 group-hover:opacity-60" 
+                      : "opacity-10 group-hover:opacity-20"
+                  }`}
                   style={{
                     backgroundImage: `url(${serviceBackgrounds[service.title]})`,
-                    backgroundSize: 'contain',
+                    backgroundSize: service.title === "Photo Printing" ? 'cover' : 'contain',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'bottom right'
+                    backgroundPosition: service.title === "Photo Printing" ? 'center' : 'bottom right'
                   }}
                 />
               )}
