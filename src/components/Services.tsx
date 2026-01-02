@@ -14,7 +14,7 @@ import {
 import xeroxMachine from "@/assets/xerox-machine.png";
 import cameraImg from "@/assets/camera.png";
 import pvcCardImg from "@/assets/pvc-card.png";
-import airplaneImg from "@/assets/airplane.png";
+import ticketBookingImg from "@/assets/ticket-booking.png";
 import hotelImg from "@/assets/hotel.png";
 import globeDigitalImg from "@/assets/globe-digital.png";
 import briefcaseImg from "@/assets/briefcase.png";
@@ -26,7 +26,7 @@ const serviceBackgrounds: Record<string, string> = {
   "Xerox & Printing": xeroxMachine,
   "Photo Printing": cameraImg,
   "PVC Card Printing": pvcCardImg,
-  "Ticket Booking": airplaneImg,
+  "Ticket Booking": ticketBookingImg,
   "Hotel Booking": hotelImg,
   "Online Work": globeDigitalImg,
   "Job Applications": briefcaseImg,
@@ -136,15 +136,15 @@ const Services = () => {
               {serviceBackgrounds[service.title] && (
                 <div 
                   className={`absolute inset-0 transition-opacity duration-500 ${
-                    service.title === "Photo Printing" || service.title === "PVC Card Printing"
+                    service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking"
                       ? "opacity-40 group-hover:opacity-60" 
                       : "opacity-10 group-hover:opacity-20"
                   }`}
                   style={{
                     backgroundImage: `url(${serviceBackgrounds[service.title]})`,
-                    backgroundSize: (service.title === "Photo Printing" || service.title === "PVC Card Printing") ? 'cover' : 'contain',
+                    backgroundSize: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking") ? 'cover' : 'contain',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: (service.title === "Photo Printing" || service.title === "PVC Card Printing") ? 'center' : 'bottom right'
+                    backgroundPosition: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking") ? 'center' : 'bottom right'
                   }}
                 />
               )}
