@@ -107,7 +107,15 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-background/60 text-sm">
-              © {currentYear} Bulbul Computer Centre. All rights reserved. | Developed by Jahangir Hussain
+              © {currentYear} Bulbul Computer Centre. All rights reserved. | Developed by{" "}
+              <a 
+                href="https://wa.me/917002443108" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-accent hover:underline"
+              >
+                Jahangir Hussain
+              </a>
             </p>
             <div className="flex gap-6 text-sm">
               <a href="#" className="text-background/60 hover:text-accent transition-colors">
