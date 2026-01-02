@@ -1,9 +1,9 @@
 import { CheckCircle2, Users, Clock, MapPin } from "lucide-react";
 
 const stats = [
-  { icon: Users, value: "10,000+", label: "Happy Customers" },
-  { icon: Clock, value: "5+ Years", label: "Experience" },
-  { icon: CheckCircle2, value: "50,000+", label: "Services Completed" },
+  { icon: Users, value: "50,000+", label: "Happy Customers" },
+  { icon: Clock, value: "13+ Years", label: "Experience" },
+  { icon: CheckCircle2, value: "1,00,000+", label: "Services Completed" },
   { icon: MapPin, value: "1", label: "Convenient Location" },
 ];
 
