@@ -171,9 +171,7 @@ const Contact = () => {
                     <option value="xerox">Xerox & Printing</option>
                     <option value="photo">Photo Printing</option>
                     <option value="pvc">PVC Card Printing</option>
-                    <option value="flight">Flight Booking</option>
-                    <option value="train">Train Booking</option>
-                    <option value="bus">Bus Booking</option>
+                    <option value="ticket">Ticket Booking</option>
                     <option value="hotel">Hotel Booking</option>
                     <option value="online">Online Work</option>
                     <option value="job">Job Applications</option>

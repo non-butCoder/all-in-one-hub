@@ -24,9 +24,7 @@ const pricingData = [
   {
     category: "Booking Services",
     services: [
-      { name: "Train Ticket Booking", price: "₹30 - ₹50", unit: "per ticket" },
-      { name: "Bus Ticket Booking", price: "₹20 - ₹30", unit: "per ticket" },
-      { name: "Flight Ticket Booking", price: "₹100 - ₹200", unit: "per ticket" },
+      { name: "Ticket Booking (Train/Bus/Flight)", price: "₹20 - ₹200", unit: "per ticket" },
       { name: "Hotel Booking", price: "₹50 - ₹100", unit: "per booking" },
     ],
   },

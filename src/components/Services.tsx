@@ -2,9 +2,7 @@ import {
   Printer, 
   Camera, 
   CreditCard, 
-  Plane, 
-  Train, 
-  Bus, 
+  Ticket, 
   Hotel, 
   Briefcase, 
   FileText, 
@@ -17,8 +15,6 @@ import xeroxMachine from "@/assets/xerox-machine.png";
 import cameraImg from "@/assets/camera.png";
 import pvcCardImg from "@/assets/pvc-card.png";
 import airplaneImg from "@/assets/airplane.png";
-import trainImg from "@/assets/train.png";
-import busImg from "@/assets/bus.png";
 import hotelImg from "@/assets/hotel.png";
 import globeDigitalImg from "@/assets/globe-digital.png";
 import briefcaseImg from "@/assets/briefcase.png";
@@ -30,9 +26,7 @@ const serviceBackgrounds: Record<string, string> = {
   "Xerox & Printing": xeroxMachine,
   "Photo Printing": cameraImg,
   "PVC Card Printing": pvcCardImg,
-  "Flight Booking": airplaneImg,
-  "Train Booking": trainImg,
-  "Bus Booking": busImg,
+  "Ticket Booking": airplaneImg,
   "Hotel Booking": hotelImg,
   "Online Work": globeDigitalImg,
   "Job Applications": briefcaseImg,
@@ -61,22 +55,10 @@ const services = [
     color: "from-emerald-500 to-teal-600",
   },
   {
-    icon: Plane,
-    title: "Flight Booking",
-    description: "Domestic & international flight tickets at best prices",
+    icon: Ticket,
+    title: "Ticket Booking",
+    description: "Flight, train & bus tickets at best prices with Tatkal booking",
     color: "from-cyan-500 to-blue-600",
-  },
-  {
-    icon: Train,
-    title: "Train Booking",
-    description: "IRCTC train tickets, Tatkal booking & cancellation",
-    color: "from-orange-500 to-red-600",
-  },
-  {
-    icon: Bus,
-    title: "Bus Booking",
-    description: "State & private bus tickets across all routes",
-    color: "from-green-500 to-emerald-600",
   },
   {
     icon: Hotel,
