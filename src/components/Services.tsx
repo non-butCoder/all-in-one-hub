@@ -136,15 +136,15 @@ const Services = () => {
               {serviceBackgrounds[service.title] && (
                 <div 
                   className={`absolute inset-0 transition-opacity duration-500 ${
-                    service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking"
+                    service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop"
                       ? "opacity-40 group-hover:opacity-60" 
                       : "opacity-10 group-hover:opacity-20"
                   }`}
                   style={{
                     backgroundImage: `url(${serviceBackgrounds[service.title]})`,
-                    backgroundSize: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking") ? 'cover' : 'contain',
+                    backgroundSize: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop") ? 'cover' : 'contain',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking") ? 'center' : 'bottom right'
+                    backgroundPosition: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop") ? 'center' : 'bottom right'
                   }}
                 />
               )}
