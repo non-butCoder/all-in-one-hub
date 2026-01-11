@@ -15,7 +15,7 @@ import xeroxMachine from "@/assets/xerox-printing-bg.png";
 import photoPrintingImg from "@/assets/photo-printing.png";
 import pvcCardImg from "@/assets/pvc-card.png";
 import ticketBookingImg from "@/assets/ticket-booking.png";
-import hotelImg from "@/assets/hotel.png";
+import hotelImg from "@/assets/hotel-booking-bg.png";
 import globeDigitalImg from "@/assets/globe-digital.png";
 import briefcaseImg from "@/assets/briefcase.png";
 import certificateImg from "@/assets/certificate.png";
@@ -136,15 +136,15 @@ const Services = () => {
               {serviceBackgrounds[service.title] && (
                 <div 
                   className={`absolute inset-0 transition-opacity duration-500 ${
-                    service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop" || service.title === "Xerox & Printing"
+                    service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop" || service.title === "Xerox & Printing" || service.title === "Hotel Booking"
                       ? "opacity-40 group-hover:opacity-60" 
                       : "opacity-10 group-hover:opacity-20"
                   }`}
                   style={{
                     backgroundImage: `url(${serviceBackgrounds[service.title]})`,
-                    backgroundSize: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop" || service.title === "Xerox & Printing") ? 'cover' : 'contain',
+                    backgroundSize: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop" || service.title === "Xerox & Printing" || service.title === "Hotel Booking") ? 'cover' : 'contain',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop" || service.title === "Xerox & Printing") ? 'center' : 'bottom right'
+                    backgroundPosition: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop" || service.title === "Xerox & Printing" || service.title === "Hotel Booking") ? 'center' : 'bottom right'
                   }}
                 />
               )}
