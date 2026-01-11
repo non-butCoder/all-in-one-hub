@@ -11,7 +11,7 @@ import {
   ArrowRight,
   IdCard
 } from "lucide-react";
-import xeroxMachine from "@/assets/xerox-machine.png";
+import xeroxMachine from "@/assets/xerox-printing-bg.png";
 import photoPrintingImg from "@/assets/photo-printing.png";
 import pvcCardImg from "@/assets/pvc-card.png";
 import ticketBookingImg from "@/assets/ticket-booking.png";
@@ -136,15 +136,15 @@ const Services = () => {
               {serviceBackgrounds[service.title] && (
                 <div 
                   className={`absolute inset-0 transition-opacity duration-500 ${
-                    service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop"
+                    service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop" || service.title === "Xerox & Printing"
                       ? "opacity-40 group-hover:opacity-60" 
                       : "opacity-10 group-hover:opacity-20"
                   }`}
                   style={{
                     backgroundImage: `url(${serviceBackgrounds[service.title]})`,
-                    backgroundSize: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop") ? 'cover' : 'contain',
+                    backgroundSize: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop" || service.title === "Xerox & Printing") ? 'cover' : 'contain',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop") ? 'center' : 'bottom right'
+                    backgroundPosition: (service.title === "Photo Printing" || service.title === "PVC Card Printing" || service.title === "Ticket Booking" || service.title === "Digital Shop" || service.title === "Xerox & Printing") ? 'center' : 'bottom right'
                   }}
                 />
               )}
